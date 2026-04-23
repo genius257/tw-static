@@ -738,6 +738,13 @@ $utilities: ();
     $utilities: map.merge($utilities, generate-utility-map("content-", (start, end), "align-content", "flex-"));
     $utilities: map.merge($utilities, generate-utility-map("content-", (between, around, evenly), "align-content", "space-"));
 
+    // align-items
+    $utilities: map.merge($utilities, generate-utility-map("items-", (start, end), "align-items", "flex-"));
+    $utilities: map.merge($utilities, generate-utility-map("items-", (center, baseline, stretch), "align-items"));
+    $utilities: map.set($utilities, "items-end-safe", (align-items: "safe flex-end"));
+    $utilities: map.set($utilities, "items-center-safe", (align-items: "safe center"));
+    $utilities: map.set($utilities, "items-baseline-last", (align-items: "last baseline"));
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
