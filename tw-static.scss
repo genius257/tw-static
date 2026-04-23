@@ -423,7 +423,7 @@
     $result: ();
     @each $option in $options {
         $value: if(sass($use-var): var(--#{$value-prefix}#{$option}); else: #{$value-prefix}#{$option});
-        $result: map.set($result, "#{$name-prefix}#{$option}", ("#{$rule}": var(--#{$value-prefix}#{$option})));
+        $result: map.set($result, "#{$name-prefix}#{$option}", ("#{$rule}": $value));
     }
 
     @return $result;
