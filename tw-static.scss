@@ -745,6 +745,13 @@ $utilities: ();
     $utilities: map.set($utilities, "items-center-safe", (align-items: "safe center"));
     $utilities: map.set($utilities, "items-baseline-last", (align-items: "last baseline"));
 
+    // align-self
+    $utilities: map.merge($utilities, generate-utility-map(self-, (auto, center, stretch, baseline), align-self));
+    $utilities: map.merge($utilities, generate-utility-map(self-, (start, end), align-self, flex-));
+    $utilities: map.set($utilities, self-end-safe, (align-self: "safe flex-end"));
+    $utilities: map.set($utilities, self-center-safe, (align-self: "safe center"));
+    $utilities: map.set($utilities, self-baseline-last, (align-self: "last baseline"));
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
