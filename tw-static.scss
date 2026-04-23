@@ -633,6 +633,17 @@ $utilities: ();
         $utilities: map.set($utilities, "row-start-#{$i}", ("grid-row-start": $i));
         $utilities: map.set($utilities, "-row-start-#{$i}", ("grid-row-start": "calc(#{$i} * -1)"));
     }
+    $utilities: map.set($utilities, "row-start-auto", ("grid-row-start": auto));
+    @for $i from 1 through 13 {
+        $utilities: map.set($utilities, "row-end-#{$i}", ("grid-row-end": $i));
+        $utilities: map.set($utilities, "-row-end-#{$i}", ("grid-row-end": "calc(#{$i} * -1)"));
+    }
+    $utilities: map.set($utilities, "row-end-auto", ("grid-row-end": auto));
+    $utilities: map.set($utilities, "row-auto", ("grid-row": auto));
+    @for $i from 1 through 12 {
+        $utilities: map.set($utilities, "row-end-#{$i}", ("grid-row": $i));
+        $utilities: map.set($utilities, "-row-end-#{$i}", ("grid-row": "calc(#{$i} * -1)"));
+    }
 
 
 
