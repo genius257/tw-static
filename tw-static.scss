@@ -728,6 +728,10 @@ $utilities: ();
         "justify-items-normal": ("justify-items": normal),
     ));
 
+    // justify-self
+    $utilities: map.merge($utilities, generate-utility-map("justify-self-", (auto, start, center, end, stretch), justify-self));
+    $utilities: map.set($utilities, "justify-self-center-safe", ("justify-self": "safe center"));
+    $utilities: map.set($utilities, "justify-self-end-safe", ("justify-self": "safe end"));
 
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
