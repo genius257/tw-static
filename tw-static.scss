@@ -645,6 +645,12 @@ $utilities: ();
         $utilities: map.set($utilities, "-row-end-#{$i}", ("grid-row": "calc(#{$i} * -1)"));
     }
 
+    // grid-auto-flow
+    $utilities: map.set($utilities, "grid-flow-row", ("grid-auto-flow": "row"));
+    $utilities: map.set($utilities, "grid-flow-col", ("grid-auto-flow": "column"));
+    $utilities: map.set($utilities, "grid-flow-dense", ("grid-auto-flow": "dense"));
+    $utilities: map.set($utilities, "grid-flow-row-dense", ("grid-auto-flow": "row dense"));
+    $utilities: map.set($utilities, "grid-flow-col-dense", ("grid-auto-flow": "column dense"));
 
 
 
