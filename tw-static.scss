@@ -658,6 +658,12 @@ $utilities: ();
     $utilities: map.set($utilities, "auto-cols-max", ("grid-auto-columns": "max-content"));
     $utilities: map.set($utilities, "auto-cols-fr", ("grid-auto-columns": "minmax(0, 1fr)"));
 
+    // grid-auto-rows
+    $utilities: map.set($utilities, "auto-rows-auto", ("grid-auto-rows": auto));
+    $utilities: map.set($utilities, "auto-rows-min", ("grid-auto-rows": "min-content"));
+    $utilities: map.set($utilities, "auto-rows-max", ("grid-auto-rows": "max-content"));
+    $utilities: map.set($utilities, "auto-rows-fr", ("grid-auto-rows": "minmax(0, 1fr)"));
+
 
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
