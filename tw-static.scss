@@ -455,7 +455,7 @@ $utilities: ();
     $utilities: map.merge($utilities, generate-utility-map("break-inside-", ("auto", "avoid", "avoid-page", "avoid-column"), "break-inside"));
 
     // box-decoration-break
-    $utilities: map.merge($utilities, generate-utility-map("box-decoration-", ("clone", "slice"), "box-decoration"));
+    $utilities: map.merge($utilities, generate-utility-map("box-decoration-", ("clone", "slice"), "box-decoration-break"));
 
     // box-sizing
     $utilities: map.set($utilities, "box-border", ("box-sizing": border-box));
