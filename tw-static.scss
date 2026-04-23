@@ -688,7 +688,7 @@ $utilities: ();
         "bg-#{$color}-#{$weight}": (
           "background-color": var(--color-#{$color}-#{$weight}),
         ),
-        "boder-#{$color}-#{$weight}": (
+        "border-#{$color}-#{$weight}": (
           "border-color": var(--color-#{$color}-#{$weight}),
         ),
         "text-#{$color}-#{$weight}": (
