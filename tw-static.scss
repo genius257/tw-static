@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use 'sass:map';
+@use 'sass:string';
 
 :root {
     --font-sans: var(--font-inter), system-ui;
@@ -429,6 +430,32 @@
     @return $result;
 }
 
+@function replace($string, $substring, $replacement, $original) {
+	$index: string.index($string, $substring);
+
+	@if $index {
+		$length: string.length($substring);
+		$offset: $index + string.length($original) - string.length($string);
+		$replace: $replacement;
+
+		@if string.index($replace, '$&') != null {
+			$replace: replace($replace, '$&', $substring, $replace);
+        }
+
+		@if string.index($replace, '$`') != null {
+			$replace: replace($replace, '$`', string.slice($original, 1, $offset - 1), $replace);
+        }
+
+		@if string.index($replace, "$'") != null {
+			$replace: replace($replace, "$'", string.slice($original, $offset + $length), $replace);
+        }
+
+		@return string.slice($string, 1, $index - 1) + $replace + replace(string.slice($string, $index + $length), $substring, $replacement, $original);
+    }
+
+	@return $string;
+}
+
 $colors: ("red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal", "cyan", "sky", "blue", "indigo", "violet", "purple", "fuchsia", "pink", "rose", "slate", "gray", "zinc", "neutral", "stone", "taupe", "mauve", "mist", "olive");
 $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950);
 
@@ -668,6 +695,8 @@ $utilities: ();
     $utilities: map.set($utilities, "gap-px", ("gap": "1px"));
     $variants: ("0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
     @each $variant in $variants {
+        $variant: "#{$variant}";
+        $variant: replace($variant, ".", "\\.", $variant);
         $utilities: map.set($utilities, "gap-#{$variant}", ("gap": "calc(var(--spacing) * #{$variant})"));
         $utilities: map.set($utilities, "gap-x-#{$variant}", ("column-gap": "calc(var(--spacing) * #{$variant})"));
         $utilities: map.set($utilities, "gap-y-#{$variant}", ("row-gap": "calc(var(--spacing) * #{$variant})"));
