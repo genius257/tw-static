@@ -733,6 +733,11 @@ $utilities: ();
     $utilities: map.set($utilities, "justify-self-center-safe", ("justify-self": "safe center"));
     $utilities: map.set($utilities, "justify-self-end-safe", ("justify-self": "safe end"));
 
+    // align-content
+    $utilities: map.merge(generate-utility-map("content-", (normal, center, baseline, stretch), "align-content"));
+    $utilities: map.merge(generate-utility-map("content-", (start, end), "align-content", "flex-"));
+    $utilities: map.merge(generate-utility-map("content-", (between, around, evenly), "align-content", "space-"));
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
