@@ -664,6 +664,15 @@ $utilities: ();
     $utilities: map.set($utilities, "auto-rows-max", ("grid-auto-rows": "max-content"));
     $utilities: map.set($utilities, "auto-rows-fr", ("grid-auto-rows": "minmax(0, 1fr)"));
 
+    // gap
+    $utilities: map.set($utilities, "gap-px", ("gap": "1px"));
+    $variants: ("0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "gap-#{$variant}", ("gap": "calc(var(--spacing) * #{$variant})"));
+        $utilities: map.set($utilities, "gap-x-#{$variant}", ("column-gap": "calc(var(--spacing) * #{$variant})"));
+        $utilities: map.set($utilities, "gap-y-#{$variant}", ("row-gap": "calc(var(--spacing) * #{$variant})"));
+    }
+
 
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
