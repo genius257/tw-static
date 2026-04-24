@@ -430,6 +430,7 @@
     @return $result;
 }
 
+// https://github.com/roydukkey/sass-fairy/blob/8ba9fe3732358e0a6bc6c1635718b5692753d2e0/packages/string/src/internal/_replace.sass
 @function replace($string, $substring, $replacement, $original) {
 	$index: string.index($string, $substring);
 
