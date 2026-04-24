@@ -779,7 +779,7 @@ $utilities: ();
         @each $variant in $variants {
             $variant: "#{$variant}";
             $variant: replace($variant, ".", "\\.", $variant);
-            $utilities: map.set($utilities, "p#{$name}-#{$variant}", ("padding#{$prop}": "calc(var(--spacing) * §{$variant})"));
+            $utilities: map.set($utilities, "p#{$name}-#{$variant}", ("padding#{$prop}": "calc(var(--spacing) * #{$variant})"));
         }
     }
 
