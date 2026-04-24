@@ -768,6 +768,21 @@ $utilities: ();
     $utilities: map.set($utilities, place-self-end-safe, (place-self: safe end));
     $utilities: map.set($utilities, place-self-center-safe, (place-self: safe center));
 
+// Spacing
+
+    // padding
+    $utilities: map.set($utilities, "p-px", ("gap": "1px"));
+    $variants: ("0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    $variants2: ("": "", x: -inline, y: -block, s: -inline-start, e: -inline-end, bs: -block-start, be: -block-end, t: -top, r: -right, b: bottom, l: -left);
+    @each $name, $prop in $variants2 {
+        $utilities: map.set($utilities, "p#{$name}-px", ("padding#{$prop}": "1px"));
+        @each $variant in $variants {
+            $variant: "#{$variant}";
+            $variant: replace($variant, ".", "\\.", $variant);
+            $utilities: map.set($utilities, "p#{$name}-#{$variant}", ("padding#{$prop}": "calc(var(--spacing) * §{$variant})"));
+        }
+    }
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
