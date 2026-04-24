@@ -773,7 +773,7 @@ $utilities: ();
     // padding
     $utilities: map.set($utilities, "p-px", ("gap": "1px"));
     $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
-    $variants2: ("": "", x: -inline, y: -block, s: -inline-start, e: -inline-end, bs: -block-start, be: -block-end, t: -top, r: -right, b: bottom, l: -left);
+    $variants2: ("": "", x: -inline, y: -block, s: -inline-start, e: -inline-end, bs: -block-start, be: -block-end, t: -top, r: -right, b: -bottom, l: -left);
     @each $name, $prop in $variants2 {
         $utilities: map.set($utilities, "p#{$name}-px", ("padding#{$prop}": "1px"));
         @each $variant in $variants {
