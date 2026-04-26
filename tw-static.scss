@@ -461,6 +461,7 @@ $colors: ("red", "orange", "amber", "yellow", "lime", "green", "emerald", "teal"
 $weights: (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950);
 
 $utilities: ();
+$utilitiesEx: ();
 
 // Layout
 
@@ -783,6 +784,46 @@ $utilities: ();
         }
     }
 
+    // margin
+    $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    $variants2: ("": "", x: -inline, y: -block, s: -inline-start, e: -inline-end, bs: -block-start, be: -block-end, t: -top, r: -right, b: -bottom, l: -left);
+    @each $name, $prop in $variants2 {
+        $utilities: map.set($utilities, "m#{$name}-px", ("margin#{$prop}": "1px"));
+        @each $variant in $variants {
+            $variant: "#{$variant}";
+            $variant: replace($variant, ".", "\\.", $variant);
+            $utilities: map.set($utilities, "m#{$name}-#{$variant}", ("margin#{$prop}": "calc(var(--spacing) * #{$variant})"));
+            @if ($variant != "0") {
+                $utilities: map.set($utilities, "-m#{$name}-#{$variant}", ("margin#{$prop}": "calc(var(--spacing) * -#{$variant})"));
+            }
+        }
+    }
+    $axes: ("x": "inline", "y": "block");
+    @each $axis, $axis-prop in $axes {
+        $utilitiesEx: map.set($utilitiesEx, "$aspace-#{$axis}-px$b > :where(:not(:last-child))", (
+            --tw-space-x-reverse: 0,
+            margin-#{$axis-prop}-start: "calc(1px * var(--tw-space-x-reverse))",
+            margin-#{$axis-prop}-end: "calc(1px * calc(1 - var(--tw-space-x-reverse)))",
+        ));
+        $utilitiesEx: map.set($utilitiesEx, "$a-space-#{$axis}-px$b > :where(:not(:last-child))", (
+            --tw-space-x-reverse: 0,
+            margin-#{$axis-prop}-start: "calc(-1px * var(--tw-space-x-reverse))",
+            margin-#{$axis-prop}-end: "calc(-1px * calc(1 - var(--tw-space-x-reverse)))",
+        ));
+        @each $variant in $variants {
+            $variant: "#{$variant}";
+            $_variant: replace($variant, ".", "\\.", $variant);
+            $utilitiesEx: map.set($utilitiesEx, "$aspace-#{$axis}-#{$_variant}$b > :where(:not(:last-child))", (
+                --tw-space-x-reverse: 0,
+                margin-#{$axis-prop}-start: calc(calc(var(--spacing) * #{$variant}) * var(--tw-space-x-reverse)),
+                margin-#{$axis-prop}-end: calc(calc(var(--spacing) * #{$variant}) * calc(1 - var(--tw-space-x-reverse))),
+            ));
+        }
+        $utilitiesEx: map.set($utilitiesEx, "$aspace-#{$axis}-reverse$b > :where(:not(:last-child))", (
+            --tw-space-x-reverse: 1,
+        ));
+    }
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
@@ -863,6 +904,29 @@ $variants: (
   // Append each variant to the selector list
   @each $prefix, $pseudo in $variants {
     $selectors: list.append($selectors, ".#{$prefix}\\:#{$name}#{$pseudo}", comma);
+  }
+
+  // Output a single block for all selectors
+  #{$selectors} {
+    @each $prop, $value in $rules {
+      #{$prop}: #{$value};
+    }
+  }
+}
+
+@each $name, $rules in $utilitiesEx {
+  // Start with the base class selector
+  $selector: "#{$name}";
+  $selector: replace($selector, "$a", ".", $selector);
+  $selector: replace($selector, "$b", "", $selector);
+  $selectors: $selector;
+
+  // Append each variant to the selector list
+  @each $prefix, $pseudo in $variants {
+    $selector: "#{$name}";
+    $selector: replace($selector, "$a", ".#{$prefix}\\:", $selector);
+    $selector: replace($selector, "$b", "#{$pseudo}", $selector);
+    $selectors: list.append($selectors, $selector, comma);
   }
 
   // Output a single block for all selectors
