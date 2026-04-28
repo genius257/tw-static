@@ -824,6 +824,62 @@ $utilitiesEx: ();
         ));
     }
 
+// Sizing
+
+    // width
+    $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    @each $variant in $variants {
+        $variant: "#{$variant}";
+        $variant: replace($variant, ".", "\\.", $variant);
+        $utilities: map.set($utilities, "w-#{$variant}", ("width": "calc(var(--spacing) * #{$variant})"));
+        $utilities: map.set($utilities, "size-#{$variant}", (
+            "width": "calc(var(--spacing) * #{$variant})",
+            "height": "calc(var(--spacing) * #{$variant})",
+        ));
+    }
+    $variants: ("1/2", "1/3", "2/3", "1/4", "2/4", "3/4", "1/5", "2/5", "3/5", "4/5", "1/6", "2/6", "3/6", "4/6", "5/6", "1/12", "2/12", "3/12", "4/12", "5/12", "6/12", "7/12", "8/12", "9/12", "10/12", "11/12");
+    @each $variant in $variants {
+        $name: replace($variant, "/", "\\/", $variant);
+        $utilities: map.set($utilities, "w-#{$name}", ("width": "calc(#{$variant} * 100%)"));
+        $utilities: map.set($utilities, "size-#{$name}", (
+            "width": "calc(#{$variant} * 100%)",
+            "height": "calc(#{$variant} * 100%)",
+        ));
+    }
+    $variants: ("dvw", "dvh", "lvw", "lvh", "svw", "svh");
+    @each $variant in $vartiants {
+        $utilities: map.set($utilities, "w-#{$variant}", ("width": "100#{$variant}"));
+        $utilities: map.set($utilities, "size-#{$variant}", (
+            "width": "100#{$variant}",
+            "height": "100#{$variant}",
+        ));
+    }
+    $utilities: map.merge($utilities, generate-utility-map("w-", ("3xs", "2xs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl"), "width", "container-", true));
+    $utilities: map.set($utilities, "w-auto", ("width": "auto"));
+    $utilities: map.set($utilities, "size-auto", (
+        "width": "auto",
+        "height": "auto",
+    ));
+    $utilities: map.set($utilities, "w-px", ("width": "1px"));
+    $utilities: map.set($utilities, "size-px", (
+        "width": "1px",
+        "height": "1px",
+    ));
+    $utilities: map.set($utilities, "w-full", ("width": "100%"));
+    $utilities: map.set($utilities, "size-full", (
+        "width": "100%",
+        "height": "100%",
+    ));
+    $utilities: map.set($utilities, "w-screen", ("width": "100vw"));
+    $variants: ("min", "max", "fit");
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "w-#{$variant}", ("width": "#{$variant}-content"));
+        $utilities: map.set($utilities, "size-#{$variant}", (
+            "width": "#{$variant}-content",
+            "height": "#{$variant}-content",
+        ));
+    }
+
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
