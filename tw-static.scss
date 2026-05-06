@@ -915,7 +915,7 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "max-w-#{$name}", ("max-width": "calc(#{$variant} * 100%)"));
     }
     $utilities: map.merge($utilities, generate-utility-map("max-w-", ("3xs", "2xs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl"), "max-width", "container-", true));
-    $variants: ("max", "max", "fit");
+    $variants: ("min", "max", "fit");
     @each $variant in $variants {
         $utilities: map.set($utilities, "max-w-#{$variant}", ("max-width": "#{$variant}-content"));
     }
@@ -985,7 +985,7 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "max-h-#{$name}", ("max-height": "calc(#{$variant} * 100%)"));
     }
     $utilities: map.merge($utilities, generate-utility-map("max-h-", ("3xs", "2xs", "xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl"), "max-height", "container-", true));
-    $variants: ("max", "max", "fit");
+    $variants: ("min", "max", "fit");
     @each $variant in $variants {
         $utilities: map.set($utilities, "max-h-#{$variant}", ("max-height": "#{$variant}-content"));
     }
