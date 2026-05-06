@@ -1135,6 +1135,11 @@ $utilitiesEx: ();
     $utilities: map.set($utilities, "max-block-screen", ("max-block-size": "100vw"));
     $utilities: map.set($utilities, "max-block-lh", ("max-block-size": "1lh"));
 
+// Typography
+
+    // font-family
+    $utilities: map.merge($utilities, generate-utility-map("font-", ("sans", "serif", "mono"), "font-family", "font-", true));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
