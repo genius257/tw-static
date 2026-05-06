@@ -1159,6 +1159,10 @@ $utilitiesEx: ();
         "-moz-osx-font-smoothing": auto,
     ));
 
+    // font-style
+    $utilities: map.set($utilities, "italic", (font-style: italic));
+    $utilities: map.set($utilities, "not-italic", (font-style: normal));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
