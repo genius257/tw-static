@@ -1140,6 +1140,15 @@ $utilitiesEx: ();
     // font-family
     $utilities: map.merge($utilities, generate-utility-map("font-", ("sans", "serif", "mono"), "font-family", "font-", true));
 
+    // font-size
+    $variants: ("xs", "sm", "base", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "6xl", "7xl", "8xl", "9xl");
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "text-#{$variant}", (
+            "font-size": "var(--text-#{$variant})",
+            "line-height": "var(--text-#{$variant}--line-height)"
+        ));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
