@@ -1149,6 +1149,16 @@ $utilitiesEx: ();
         ));
     }
 
+    // font-smoothing
+    $utilities: map.set($utilities, "antialiased", (
+        "-webkit-font-smoothing": "antialiased",
+        "-moz-osx-font-smoothing": "grayscale",
+    ));
+    $utilities: map.set($utilities, "subpixel-antialiased", (
+        "-webkit-font-smoothing": auto,
+        "-moz-osx-font-smoothing": auto,
+    ));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
