@@ -1163,6 +1163,12 @@ $utilitiesEx: ();
     $utilities: map.set($utilities, "italic", (font-style: italic));
     $utilities: map.set($utilities, "not-italic", (font-style: normal));
 
+    // font-weight
+    $vartiants: (thin: 100, extralight: 200, light: 300, normal: 400, medium: 500, semibold: 600, bold: 700, extrabold: 800, black: 900);
+    @each $name, $value in $variants {
+        $utilities: map.set($utilities, "font-#{$name}", ("font-weight": $value));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
