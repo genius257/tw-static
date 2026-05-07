@@ -1172,6 +1172,10 @@ $utilitiesEx: ();
     // font-stretch
     $utilities: map.merge($utilities, generate-utility-map("font-stretch-", ("ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded"), "font-stretch"));
 
+    // font-variant-numeric
+    $utilities: map.set($utilities, "normal-nums", ("font-variant-numeric": normal));
+    $utilities: map.merge($utilities, generate-utility-map("", ("ordinal", "slashed-zero", "lining-nums", "oldstyle-nums", "proportional-nums", "tabular-nums", "diagonal-fractions", "stacked-fractions"), "font-variant-numeric"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
