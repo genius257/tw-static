@@ -1242,6 +1242,13 @@ $utilitiesEx: ();
     // text-decoration-style
     $utilities: map.merge($utilities, generate-utility-map("decoration-", (solid, double, dotted, dashed, wavy), "text-decoration-style"));
 
+    // text-decoration-thickness
+    $utilities: map.merge($utilities, generate-utility-map("decoration-", (auto, "from-font"), "text-decoration-thickness"));
+    $variants: (0, 1, 2, 4, 8);
+    @each $i in $variants {
+        $utilities: map.set($utilities, "decoration-#{$i}", ("text-decoration-thickness": "#{$i}px"));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
