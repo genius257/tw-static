@@ -1215,6 +1215,16 @@ $utilitiesEx: ();
     // text-align
     $utilities: map.merge($utilities, generate-utility-map("text-", (left, center, right, justify, start, end), "text-align"));
 
+    // color
+    $utilities: map.merge($utilities, generate-utility-map("text-", (inherit, transparent), "color"));
+    $utilities: map.set($utilities, "text-current", ("color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("text-", (black, white), "color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "text-#{$color}-#{$weight}", ("color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
