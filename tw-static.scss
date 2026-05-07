@@ -1212,6 +1212,9 @@ $utilitiesEx: ();
     // list-style-type
     $utilities: map.merge($utilities, generate-utility-map("list-", (disc, decimal, none), "list-style-type"));
 
+    // text-align
+    $utilities: map.merge($utilities, generate-utility-map("text-", (left, center, right, justify, start, end), "text-align"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
