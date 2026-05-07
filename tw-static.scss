@@ -1176,6 +1176,11 @@ $utilitiesEx: ();
     $utilities: map.set($utilities, "normal-nums", ("font-variant-numeric": normal));
     $utilities: map.merge($utilities, generate-utility-map("", ("ordinal", "slashed-zero", "lining-nums", "oldstyle-nums", "proportional-nums", "tabular-nums", "diagonal-fractions", "stacked-fractions"), "font-variant-numeric"));
 
+    // font-feature-settings
+
+    // letter-spacing
+    $utilities: map.merge($utilities, generate-utility-map("tracking-", (tighter, tight, normal, wide, wider, widest), "letter-spacing", "tracking-", true));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
