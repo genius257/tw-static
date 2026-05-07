@@ -1203,6 +1203,9 @@ $utilitiesEx: ();
     }
     $utilities: map.set($utilities, "leading-none", ("line-height": 1));
 
+    // list-style-image
+    $utilities: map.set($utilities, "list-style-image", ("list-style-image": none));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
