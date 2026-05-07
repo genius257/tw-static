@@ -1229,6 +1229,16 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("", (underline, overline, "line-through"), "text-decoration-line"));
     $utilities: map.set($utilities, "no-underline", ("text-decoration-line": none));
 
+    // text-decoration-color
+    $utilities: map.merge($utilities, generate-utility-map("decoration-", (inherit, transparent), "text-decoration-color"));
+    $utilities: map.set($utilities, "decoration-current", ("text-decoration-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("decoration-", (black, white), "text-decoration-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "decoration-#{$color}-#{$weight}", ("text-decoration-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
