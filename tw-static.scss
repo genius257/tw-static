@@ -1197,6 +1197,12 @@ $utilitiesEx: ();
         "-webkit-line-clamp": unset,
     ));
 
+    // line-height
+    @for $i from 1 through 10 {
+        $utilities: map.set($utilities, "leading-#{$i}", ("line-height": "calc(var(--spacing) * #{$i})"));
+    }
+    $utilities: map.set($utilities, "leading-none", ("line-height": 1));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
