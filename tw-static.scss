@@ -1169,6 +1169,9 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "font-#{$name}", ("font-weight": $value));
     }
 
+    // font-stretch
+    $utilities: map.merge($utilities, generate-utility-map("font-stretch-", ("ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded"), "font-stretch"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
