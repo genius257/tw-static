@@ -1239,6 +1239,9 @@ $utilitiesEx: ();
         }
     }
 
+    // text-decoration-style
+    $utilities: map.merge($utilities, generate-utility-map("decoration-", (solid, double, dotted, dashed, wavy), "text-decoration-style"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
