@@ -1181,6 +1181,22 @@ $utilitiesEx: ();
     // letter-spacing
     $utilities: map.merge($utilities, generate-utility-map("tracking-", (tighter, tight, normal, wide, wider, widest), "letter-spacing", "tracking-", true));
 
+    // line-clamp
+    @for $i from 1 through 6 {
+        $utilities: map.set($utilities, "line-clamp-#{$i}", (
+            "overflow": hidden,
+            "display": "-webkit-box",
+            "-webkit-box-orient": vertical,
+            "-webkit-line-clamp": $i,
+        ));
+    }
+    $utilities: map.set($utilities, "line-clamp-none", (
+        "overflow": visible,
+        "display": block,
+        "-webkit-box-orient": horizontal,
+        "-webkit-line-clamp": unset,
+    ));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
