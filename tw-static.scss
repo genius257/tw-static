@@ -1206,6 +1206,9 @@ $utilitiesEx: ();
     // list-style-image
     $utilities: map.set($utilities, "list-style-image", ("list-style-image": none));
 
+    // list-style-position
+    $utilities: map.merge($utilities, generate-utility-map("list-", (inside, outside), "list-style-position"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
