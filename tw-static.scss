@@ -1374,6 +1374,9 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("bg-repeat-", (space, round), "background-repeat"));
     $utilities: map.set($utilities, "bg-no-repeat", ("background-repeat": "no-repeat"));
 
+    // background-size
+    $utilities: map.merge($utilities, generate-utility-map("bg-", (auto, cover, contain), "background-size"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
