@@ -1313,6 +1313,13 @@ $utilitiesEx: ();
     // background-attachment
     $utilities: map.merge($utilities, generate-utility-map("bg-", (fixed, local, scroll), "background-attachment"));
 
+    // background-clip
+    $variants: (border, padding, content);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "bg-clip-#{$variant}", ("background-clip": "#{$variant}-box"));
+    }
+    $utilities: map.set($utilities, "bg-clip-text", ("background-clip": text));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
