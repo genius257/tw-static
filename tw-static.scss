@@ -1268,6 +1268,9 @@ $utilitiesEx: ();
     ));
     $utilities: map.merge($utilities, generate-utility-map("text-", (ellipsis, clip), "text-overflow"));
 
+    // text-wrap
+    $utilities: map.merge($utilities, generate-utility-map("text-", (wrap, nowrap, balance, pretty), "text-wrap"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
