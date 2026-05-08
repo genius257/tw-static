@@ -1320,6 +1320,16 @@ $utilitiesEx: ();
     }
     $utilities: map.set($utilities, "bg-clip-text", ("background-clip": text));
 
+    // background-color
+    $utilities: map.merge($utilities, generate-utility-map("bg-", (inherit, transparent), "background-color"));
+    $utilities: map.set($utilities, "bg-current", ("background-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("bg-", (black, white), "background-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "bg-#{$color}-#{$weight}", ("background-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
