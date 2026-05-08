@@ -1308,6 +1308,11 @@ $utilitiesEx: ();
     // content
     $utilities: map.set($utilities, "content-none", ("content": none));
 
+// Backgrounds
+
+    // background-attachment
+    $utilities: map.merge($utilities, generate-utility-map("bg-", (fixed, local, scroll), "background-attachment"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
