@@ -1377,6 +1377,11 @@ $utilitiesEx: ();
     // background-size
     $utilities: map.merge($utilities, generate-utility-map("bg-", (auto, cover, contain), "background-size"));
 
+// Borders
+
+    // border-radius
+    $utilities: map.merge($utilities, generate-utility-map("rounded-", (xs, sm, md, lg, xl, "2xl", "3xl", "4xl"), "border-radius", "radius-", true));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
