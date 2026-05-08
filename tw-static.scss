@@ -1302,6 +1302,9 @@ $utilitiesEx: ();
     // overflow-wrap
     $utilities: map.merge($utilities, generate-utility-map("wrap-", ("break-word", anywhere, normal), "overflow-wrap"));
 
+    // hyphens
+    $utilities: map.merge($utilities, generate-utility-map("hyphens-", (none, manual, auto), "hyphens"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
