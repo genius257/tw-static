@@ -1299,6 +1299,9 @@ $utilitiesEx: ();
     $utilities: map.set($utilities, "break-all", ("word-break": "break-all"));
     $utilities: map.set($utilities, "break-keep", ("word-break": "keep-all"));
 
+    // overflow-wrap
+    $utilities: map.merge($utilities, generate-utility-map("wrap-", ("break-word", anywhere, normal), "overflow-wrap"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
