@@ -1369,6 +1369,11 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "bg-#{$variant}", ("background-position": $value));
     }
 
+    // background-repeat
+    $utilities: map.merge($utilities, generate-utility-map("bg-", (repeat, "repeat-x", "repeat-y"), "background-repeat"));
+    $utilities: map.merge($utilities, generate-utility-map("bg-repeat-", (space, round), "background-repeat"));
+    $utilities: map.set($utilities, "bg-no-repeat", ("background-repeat": "no-repeat"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
