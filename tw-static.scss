@@ -1249,6 +1249,13 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "decoration-#{$i}", ("text-decoration-thickness": "#{$i}px"));
     }
 
+    // text-underline-offset
+    $variants: (0, 1, 2, 4, 8);
+    @each $i in $variants {
+        $utilities: map.set($utilities, "underline-offset-#{$i}", ("text-underline-offset": "#{$i}px"));
+    }
+    $utilities: map.set($utilities, "underline-offset-auto", ("text-underline-offset": auto));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
