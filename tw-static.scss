@@ -1271,6 +1271,23 @@ $utilitiesEx: ();
     // text-wrap
     $utilities: map.merge($utilities, generate-utility-map("text-", (wrap, nowrap, balance, pretty), "text-wrap"));
 
+    // text-indent
+    $utilities: map.set($utilities, "indent-px", (text-indent: "1px"));
+    $utilities: map.set($utilities, "-indent-px", (text-indent: "-1px"));
+    $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    @each $variant in $variants {
+        $variant: "#{$variant}";
+        $variant: replace($variant, ".", "\\.", $variant);
+        $utilities: map.merge($utilities, (
+            "indent-#{$variant}": (
+                "text-indent": "calc(var(--spacing) * #{$variant})",
+            ),
+            "-indent-#{$variant}": (
+                "text-indent": "calc(var(--spacing) * -#{$variant})",
+            ),
+        ));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
