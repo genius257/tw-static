@@ -1362,6 +1362,13 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "bg-origin-#{$variant}", ("background-origin": "#{$variant}-box"));
     }
 
+    // background-position
+    $variants: ("top-left", top, "top-right", left, center, right, "bottom-left", bottom, "bottom-right");
+    @each $variant in $variants {
+        $value: replace($variant, "-", " ", $variant);
+        $utilities: map.set($utilities, "bg-#{$variant}", ("background-position": $value));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
