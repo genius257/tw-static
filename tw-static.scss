@@ -1256,6 +1256,10 @@ $utilitiesEx: ();
     }
     $utilities: map.set($utilities, "underline-offset-auto", ("text-underline-offset": auto));
 
+    // text-transform
+    $utilities: map.merge($utilities, generate-utility-map("", (uppercase, lowercase, capitalize), "text-transform"));
+    $utilities: map.set($utilities, "normal-case", ("text-transform": none));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
