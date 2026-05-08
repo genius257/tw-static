@@ -1260,6 +1260,14 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("", (uppercase, lowercase, capitalize), "text-transform"));
     $utilities: map.set($utilities, "normal-case", ("text-transform": none));
 
+    // text-overflow
+    $utilities: map.set($utilities, "truncate", (
+        overflow: hidden,
+        text-overflow: ellipsis,
+        white-space: nowrap,
+    ));
+    $utilities: map.merge($utilities, generate-utility-map("text-", (ellipsis, clip), "text-overflow"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
