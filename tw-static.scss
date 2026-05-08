@@ -1330,6 +1330,32 @@ $utilitiesEx: ();
         }
     }
 
+    // background-image
+    $utilities: map.set($utilities, "bg-none", ("background-image": none));
+    $variants: (t: top, tr: "top right", r: right, br: "bottom right", b: bottom, bl: "bottom left", l: left, tl: "top left", );
+    @each $name, $value in $variants {
+        $utilities: map.set($utilities, "bg-linear-to-#{$name}", ("background-image": "linear-gradient(to #{$value}, var(--tw-gradient-stops))"));
+    }
+    $utilities: map.set($utilities, "bg-radial", ("background-image": "radial-gradient(in oklab, var(--tw-gradient-stops))"));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.merge($utilities, (
+                "from-#{$color}-#{$weight}": (
+                    "--tw-gradient-from": "var(--color-#{$color}-#{$weight})",
+                    "--tw-gradient-stops": "var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from)var(--tw-gradient-from-position),var(--tw-gradient-to)var(--tw-gradient-to-position))",
+                ),
+                "via-#{$color}-#{$weight}": (
+                    "--tw-gradient-via": "var(--color-#{$color}-#{$weight})",
+                    "--tw-gradient-stops": "var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from)var(--tw-gradient-from-position),var(--tw-gradient-to)var(--tw-gradient-to-position))",
+                ),
+                "to-#{$color}-#{$weight}": (
+                    "--tw-gradient-to": "var(--color-#{$color}-#{$weight})",
+                    "--tw-gradient-stops": "var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from)var(--tw-gradient-from-position),var(--tw-gradient-to)var(--tw-gradient-to-position))",
+                ),
+            ));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
