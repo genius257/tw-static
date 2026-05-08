@@ -1288,6 +1288,9 @@ $utilitiesEx: ();
         ));
     }
 
+    // vertical-align
+    $utilities: map.merge($utilities, generate-utility-map("align-", (baseline, top, middle, bottom, "text-top", "text-bottom", sub, super), "vertical-align"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
