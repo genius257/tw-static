@@ -1294,6 +1294,11 @@ $utilitiesEx: ();
     // white-space
     $utilities: map.merge($utilities, generate-utility-map("whitespace-", (normal, nowrap, pre, "pre-line", "pre-wrap", "break-spaces"), "white-space"));
 
+    // word-break
+    $utilities: map.set($utilities, "break-normal", ("word-break": normal));
+    $utilities: map.set($utilities, "break-all", ("word-break": "break-all"));
+    $utilities: map.set($utilities, "break-keep", ("word-break": "keep-all"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
