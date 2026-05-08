@@ -1305,6 +1305,9 @@ $utilitiesEx: ();
     // hyphens
     $utilities: map.merge($utilities, generate-utility-map("hyphens-", (none, manual, auto), "hyphens"));
 
+    // content
+    $utilities: map.set($utilities, "content-none", ("content": none));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
