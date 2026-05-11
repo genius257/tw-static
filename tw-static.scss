@@ -1475,6 +1475,13 @@ $utilitiesEx: ();
         "outline-offset": "2px",
     ));
 
+    // outline-offset
+    $variants: (0, 1, 2, 4, 8);
+    @each $i in $variants {
+        $utilities: map.set($utilities, "outline-offset-#{$i}", ("outline-offset": "#{$i}px"));
+        $utilities: map.set($utilities, "-outline-offset-#{$i}", ("outline-offset": "calc(#{$i}px * -1)"));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
