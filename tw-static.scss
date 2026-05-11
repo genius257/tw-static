@@ -1508,6 +1508,12 @@ $utilitiesEx: ();
         }
     }
 
+    // opacity
+    @for $i from 0 through 20 {
+        $variant: $i * 5;
+        $utilities: map.set($utilities, "opacity-#{$variant}", (opacity: "#{$variant}%"));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
