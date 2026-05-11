@@ -1458,6 +1458,16 @@ $utilitiesEx: ();
         ));
     }
 
+    // outline-color
+    $utilities: map.merge($utilities, generate-utility-map("outline-", (inherit, transparent), "outline-color"));
+    $utilities: map.set($utilities, "outline-current", ("outline-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("outline-", (black, white), "outline-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "outline-#{$color}-#{$weight}", ("outline-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
