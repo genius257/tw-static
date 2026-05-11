@@ -418,6 +418,7 @@
     --default-mono-font-family: var(--font-plex-mono), monospace;
     --default-mono-font-feature-settings: "ss02", "zero";
     --font-ubuntu-mono: var(--font-ubuntu-mono);
+    --tw-border-style: solid;
 }
 
 @function generate-utility-map($name-prefix, $options, $rule, $value-prefix: "", $use-var: false) {
@@ -1381,6 +1382,47 @@ $utilitiesEx: ();
 
     // border-radius
     $utilities: map.merge($utilities, generate-utility-map("rounded-", (xs, sm, md, lg, xl, "2xl", "3xl", "4xl"), "border-radius", "radius-", true));
+
+    // border-width
+    $variants: ("": "-width", "-x": "-inline-width", "-y": "-block-width", "-s": "-inline-start-width", "-e": "-inline-end-width", "-bs": "-block-start-width", "-be": "border-block-end-width", "-t": "-top-width", "-r": "-right-width", "-b": "-bottom-width", "-l": "-left-width");
+    @each $name, $prop in $variants {
+        $utilities: map.set($utilities, "border#{$name}", ("border#{$prop}": "1px"));    
+        $variants2: (0, 2, 4, 8);
+        @each $i in $variants2 {
+            $utilities: map.set($utilities, "border#{$name}-#{$i}", ("border#{$prop}": "#{$i}px"));
+        }
+    }
+    $utilitiesEx: map.set($utilitiesEx, "$adivide-x$b > :where(:not(:last-child))", (
+        "--tw-divide-x-reverse": 0,
+        "border-inline-style": "var(--tw-border-style)",
+        "border-inline-start-width": "calc(1px * var(--tw-divide-x-reverse))",
+        "border-inline-end-width": "calc(1px * calc(1 - var(--tw-divide-x-reverse)))",
+    ));
+    $utilitiesEx: map.set($utilitiesEx, "$adivide-y$b > :where(:not(:last-child))", (
+        "--tw-divide-y-reverse": 0,
+        "border-bottom-style": "var(--tw-border-style)",
+        "border-top-style": "var(--tw-border-style)",
+        "border-top-width": "calc(1px * var(--tw-divide-y-reverse))",
+        "border-bottom-width": "calc(1px * calc(1 - var(--tw-divide-y-reverse)))",
+    ));
+    $variants: (0, 2, 4, 8);
+    @each $i in $variants {
+        $utilitiesEx: map.set($utilitiesEx, "$adivide-x-#{$i}$b > :where(:not(:last-child))", (
+            "--tw-divide-x-reverse": 0,
+            "border-inline-style": "var(--tw-border-style)",
+            "border-inline-start-width": "calc(#{$i}px * var(--tw-divide-x-reverse))",
+            "border-inline-end-width": "calc(#{$i}px * calc(1 - var(--tw-divide-x-reverse)))",
+        ));
+        $utilitiesEx: map.set($utilitiesEx, "$adivide-y-#{$i}$b > :where(:not(:last-child))", (
+            "--tw-divide-y-reverse": 0,
+            "border-bottom-style": "var(--tw-border-style)",
+            "border-top-style": "var(--tw-border-style)",
+            "border-top-width": "calc(#{$i}px * var(--tw-divide-y-reverse))",
+            "border-bottom-width": "calc(#{$i}px * calc(1 - var(--tw-divide-y-reverse)))",
+        ));
+    }
+    $utilitiesEx: map.set($utilities, "divide-x-reverse", ("--tw-divide-x-reverse": 1));
+    $utilitiesEx: map.set($utilities, "divide-y-reverse", ("--tw-divide-y-reverse": 1));
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
