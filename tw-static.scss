@@ -1496,6 +1496,18 @@ $utilitiesEx: ();
         }
     }
 
+    // text-shadow
+    $utilities: map.merge($utilities, generate-utility-map("text-shadow-", ("2xs", xs, sm, md, lg), "box-shadow", "text-shadow-", true));
+    $utilities: map.set($utilities, "text-shadow-none", ("text-shadow": "none"));
+    $utilities: map.merge($utilities, generate-utility-map("text-shadow-", (inherit, transparent), "--tw-shadow-color"));
+    $utilities: map.set($utilities, "text-shadow-current", ("--tw-shadow-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("text-shadow-", (black, white), "--tw-shadow-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "text-shadow-#{$color}-#{$weight}", ("--tw-shadow-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
