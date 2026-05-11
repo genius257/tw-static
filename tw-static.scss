@@ -1424,6 +1424,16 @@ $utilitiesEx: ();
     $utilitiesEx: map.set($utilities, "divide-x-reverse", ("--tw-divide-x-reverse": 1));
     $utilitiesEx: map.set($utilities, "divide-y-reverse", ("--tw-divide-y-reverse": 1));
 
+    // border-color
+    $utilities: map.merge($utilities, generate-utility-map("border-", (inherit, transparent), "border-color"));
+    $utilities: map.set($utilities, "border-current", ("border-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("border-", (black, white), "border-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "border-#{$color}-#{$weight}", ("border-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
