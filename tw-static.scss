@@ -1468,6 +1468,13 @@ $utilitiesEx: ();
         }
     }
 
+    // outline-style
+    $utilities: map.merge($utilities, generate-utility-map("outline-", (solid, dashed, dotted, double, none), "outline-style"));
+    $utilities: map.set($utilities, "outline-hidden", (
+        outline: "2px solid transparent",
+        "outline-offset": "2px",
+    ));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
