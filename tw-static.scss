@@ -1482,6 +1482,20 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "-outline-offset-#{$i}", ("outline-offset": "calc(#{$i}px * -1)"));
     }
 
+// Effects
+
+    // box-shadow
+    $utilities: map.merge($utilities, generate-utility-map("shadow-", ("2xs", xs, sm, md, lg, xl, "2xl"), "box-shadow", "shadow-", true));
+    $utilities: map.set($utilities, "shadow-none", ("box-shadow": "0 0 #0000"));
+    $utilities: map.merge($utilities, generate-utility-map("outline-", (inherit, transparent), "--tw-shadow-color"));
+    $utilities: map.set($utilities, "outline-current", ("--tw-shadow-color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("outline-", (black, white), "--tw-shadow-color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "outline-#{$color}-#{$weight}", ("--tw-shadow-color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
