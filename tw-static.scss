@@ -1517,6 +1517,9 @@ $utilitiesEx: ();
     // mix-blend-mode
     $utilities: map.merge($utilities, generate-utility-map("mix-blend-", (normal, multiply, screen, overlay, darken, lighten, "color-dodge", "color-burn", "hard-light", "soft-light", difference, exclusion, hue, saturation, color, luminosity, "plus-darker", "plus-lighter"), "mix-blend-mode"));
 
+    // background-blend-mode
+    $utilities: map.merge($utilities, generate-utility-map("bg-blend-", (normal, multiply, screen, overlay, darken, lighten, "color-dodge", "color-burn", "hard-light", "soft-light", difference, exclusion, hue, saturation, color, luminosity), "background-blend-mode"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
