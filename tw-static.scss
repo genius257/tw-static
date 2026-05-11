@@ -419,6 +419,7 @@
     --default-mono-font-feature-settings: "ss02", "zero";
     --font-ubuntu-mono: var(--font-ubuntu-mono);
     --tw-border-style: solid;
+    --tw-outline-style: solid;
 }
 
 @function generate-utility-map($name-prefix, $options, $rule, $value-prefix: "", $use-var: false) {
@@ -1441,6 +1442,19 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "divide-#{$variant}", (
             "--tw-border-style": $variant,
             "border-style": $variant,
+        ));
+    }
+
+    // outline-width
+    $utilities: map.set($utilities, "outline", (
+        "outline-style": "var(--tw-outline-style)",
+        "outline-width": "1px",
+    ));
+    $variants: (0, 2, 4, 8);
+    @each $i in $variants {
+        $utilities: map.set($utilities, "outline-#{$i}", (
+            "outline-style": "var(--tw-outline-style)",
+            "outline-width": "#{$i}px",
         ));
     }
 
