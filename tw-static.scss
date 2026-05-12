@@ -1683,6 +1683,9 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("mask-", (repeat, "no-repeat", "repeat-x", "repeat-y"), "mask-repeat"));
     $utilities: map.merge($utilities, generate-utility-map("mask-repeat-", (space, round), "mask-repeat"));
 
+    // mask-size
+    $utilities: map.merge($utilities, generate-utility-map("mask-", (auto, cover, contain), "mask-size"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
