@@ -420,6 +420,14 @@
     --font-ubuntu-mono: var(--font-ubuntu-mono);
     --tw-border-style: solid;
     --tw-outline-style: solid;
+    --tw-mask-linear: linear-gradient(#fff, #fff);
+    --tw-mask-radial: linear-gradient(#fff, #fff);
+    --tw-mask-conic: linear-gradient(#fff, #fff);
+    --tw-mask-linear-position: 0deg;
+    --tw-mask-linear-from-position: 0%;
+    --tw-mask-linear-to-position: 100%;
+    --tw-mask-linear-from-color: black;
+    --tw-mask-linear-to-color: transparent;
 }
 
 @function generate-utility-map($name-prefix, $options, $rule, $value-prefix: "", $use-var: false) {
@@ -1529,6 +1537,133 @@ $utilitiesEx: ();
 
     // mask-composite
     $utilities: map.merge($utilities, generate-utility-map("mask-", (add, subtract, intersect, exclude), "mask-composite"));
+
+    // mask-image
+    $utilities: map.set($utilities, "mask-none", ("mask-image": none));
+    @for $i from 0 through 10 {
+        $variant: $i * 10;
+        $utilities: map.set($utilities, "mask-linear-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear-stops": "var(--tw-mask-linear-position), var(--tw-mask-linear-from-color) var(--tw-mask-linear-from-position), var(--tw-mask-linear-to-color) var(--tw-mask-linear-to-position)",
+            "--tw-mask-linear": "linear-gradient(var(--tw-mask-linear-stops))",
+            "--tw-mask-linear-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-linear-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear-stops": "var(--tw-mask-linear-position), var(--tw-mask-linear-from-color) var(--tw-mask-linear-from-position), var(--tw-mask-linear-to-color) var(--tw-mask-linear-to-position)",
+            "--tw-mask-linear": "linear-gradient(var(--tw-mask-linear-stops))",
+            "--tw-mask-linear-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-t-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-top": "linear-gradient(to top, var(--tw-mask-top-from-color) var(--tw-mask-top-from-position), var(--tw-mask-top-to-color) var(--tw-mask-top-to-position))",
+            "--tw-mask-top-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-t-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-top": "linear-gradient(to top, var(--tw-mask-top-from-color) var(--tw-mask-top-from-position), var(--tw-mask-top-to-color) var(--tw-mask-top-to-position))",
+            "--tw-mask-top-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-r-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-right": "linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position))",
+            "--tw-mask-right-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-r-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-right": "linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position))",
+            "--tw-mask-right-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-b-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-bottom": "linear-gradient(to bottom, var(--tw-mask-bottom-from-color) var(--tw-mask-bottom-from-position), var(--tw-mask-bottom-to-color) var(--tw-mask-bottom-to-position))",
+            "--tw-mask-bottom-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-b-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-bottom": "linear-gradient(to bottom, var(--tw-mask-bottom-from-color) var(--tw-mask-bottom-from-position), var(--tw-mask-bottom-to-color) var(--tw-mask-bottom-to-position))",
+            "--tw-mask-bottom-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-l-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-left": "linear-gradient(to left, var(--tw-mask-left-from-color) var(--tw-mask-left-from-position), var(--tw-mask-left-to-color) var(--tw-mask-left-to-position))",
+            "--tw-mask-left-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-l-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-left": "linear-gradient(to left, var(--tw-mask-left-from-color) var(--tw-mask-left-from-position), var(--tw-mask-left-to-color) var(--tw-mask-left-to-position))",
+            "--tw-mask-left-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-y-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-top": "linear-gradient(to top, var(--tw-mask-top-from-color) var(--tw-mask-top-from-position), var(--tw-mask-top-to-color) var(--tw-mask-top-to-position))",
+            "--tw-mask-top-from-position": "#{$variant}%",
+            "--tw-mask-bottom": "linear-gradient(to bottom, var(--tw-mask-bottom-from-color) var(--tw-mask-bottom-from-position), var(--tw-mask-bottom-to-color) var(--tw-mask-bottom-to-position))",
+            "--tw-mask-bottom-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-y-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-top": "linear-gradient(to top, var(--tw-mask-top-from-color) var(--tw-mask-top-from-position), var(--tw-mask-top-to-color) var(--tw-mask-top-to-position))",
+            "--tw-mask-top-to-position": "#{$variant}%",
+            "--tw-mask-bottom": "linear-gradient(to bottom, var(--tw-mask-bottom-from-color) var(--tw-mask-bottom-from-position), var(--tw-mask-bottom-to-color) var(--tw-mask-bottom-to-position))",
+            "--tw-mask-bottom-to-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-x-from-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-right": "linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position))",
+            "--tw-mask-right-from-position": "#{$variant}%",
+            "--tw-mask-left": "linear-gradient(to left, var(--tw-mask-left-from-color) var(--tw-mask-left-from-position), var(--tw-mask-left-to-color) var(--tw-mask-left-to-position))",
+            "--tw-mask-left-from-position": "#{$variant}%",
+        ));
+        $utilities: map.set($utilities, "mask-x-to-#{$variant}\%", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "var(--tw-mask-left), var(--tw-mask-right), var(--tw-mask-bottom), var(--tw-mask-top)",
+            "--tw-mask-right": "linear-gradient(to right, var(--tw-mask-right-from-color) var(--tw-mask-right-from-position), var(--tw-mask-right-to-color) var(--tw-mask-right-to-position))",
+            "--tw-mask-right-to-position": "#{$variant}%",
+            "--tw-mask-left": "linear-gradient(to left, var(--tw-mask-left-from-color) var(--tw-mask-left-from-position), var(--tw-mask-left-to-color) var(--tw-mask-left-to-position))",
+            "--tw-mask-left-to-position": "#{$variant}%",
+        ));
+    }
+    @for $i from 0 through 20 {
+        $variant: $i * 5;
+        $utilities: map.set($utilities, "mask-linear-#{$variant}", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "linear-gradient(var(--tw-mask-linear-stops, var(--tw-mask-linear-position)))",
+            "--tw-mask-linear-position": "calc(1deg * #{$variant})",
+        ));
+        $utilities: map.set($utilities, "-mask-linear-#{$variant}", (
+            "mask-image": "var(--tw-mask-linear), var(--tw-mask-radial), var(--tw-mask-conic)",
+            "mask-composite": intersect,
+            "--tw-mask-linear": "linear-gradient(var(--tw-mask-linear-stops, var(--tw-mask-linear-position)))",
+            "--tw-mask-linear-position": "calc(1deg * -#{$variant})",
+        ));
+    }
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
