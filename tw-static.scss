@@ -1668,6 +1668,12 @@ $utilitiesEx: ();
     // mask-mode
     $utilities: map.merge($utilities, generate-utility-map("mask-", (alpha, luminance, match), "mask-mode"));
 
+    // mask-origin
+    $vartiants: (border, padding, content, fill, stroke, view);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "mask-origin-#{$variant}", ("mask-origin": "${variant}-box"));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
