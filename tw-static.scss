@@ -1527,6 +1527,9 @@ $utilitiesEx: ();
     }
     $utilities: map.set($utilities, "mask-no-clip", ("mask-clip": "no-clip"));
 
+    // mask-composite
+    $utilities: map.merge($utilities, generate-utility-map("mask-", (add, subtract, intersect, exclude), "mask-composite"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
