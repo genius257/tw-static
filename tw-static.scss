@@ -1674,6 +1674,11 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "mask-origin-#{$variant}", ("mask-origin": "${variant}-box"));
     }
 
+    // mask-position
+    $utilities: map.merge($utilities, generate-utility-map("mask-", (top, left, right, bottom), "mask-position"));
+    $utilities: map.merge($utilities, generate-utility-map("mask-top-", (left, right), "mask-position", "top "));
+    $utilities: map.merge($utilities, generate-utility-map("mask-bottom-", (left, right), "mask-position", "bottom "));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
