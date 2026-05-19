@@ -2129,6 +2129,51 @@ $utilitiesEx: ();
         ));
     }
 
+    // scale
+    @for $i from 0 through 20 {
+        $variant: $i*5;
+        $utilities: map.merge($utilities, (
+            "scale-#{$variant}": (
+                "--tw-scale-x": "#{$variant}%",
+                "--tw-scale-y": "#{$variant}%",
+                "--tw-scale-z": "#{$variant}%",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "-scale-#{$variant}": (
+                "--tw-scale-x": "calc(#{$variant}% * -1)",
+                "--tw-scale-y": "calc(#{$variant}% * -1)",
+                "--tw-scale-z": "calc(#{$variant}% * -1)",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "scale-x-#{$variant}": (
+                "--tw-scale-x": "#{$variant}%",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "-scale-x-#{$variant}": (
+                "--tw-scale-x": "calc(#{$variant}% * -1)",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "scale-y-#{$variant}": (
+                "--tw-scale-y": "#{$variant}%",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "-scale-y-#{$variant}": (
+                "--tw-scale-y": "calc(#{$variant}% * -1)",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "scale-z-#{$variant}": (
+                "--tw-scale-z": "#{$variant}%",
+                scale: "var(--tw-scale-x) var(--tw-scale-y)",
+            ),
+            "-scale-z-#{$variant}": (
+                "--tw-scale-z": "calc(#{$variant}% * -1)",
+                scale: "var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)",
+            ),
+        ));
+    }
+    $utilities: map.set($utilities, "scale-none", (scale: none));
+    $utilities: map.set($utilities, "scale-3d", (scale: "var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
