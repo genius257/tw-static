@@ -2079,6 +2079,10 @@ $utilitiesEx: ();
     // backface-visibility
     $utilities: map.merge($utilities, generate-utility-map("backface-", (hidden, visible), "backface-visibility"));
 
+    // perspective
+    $utilities: map.merge($utilities, generate-utility-map("perspective-", (dramatic, near, normal, midrange, distant), "perspective", "perspective-", true));
+    $utilities: map.set($utilities, "perspective-none", (perspective: none));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
