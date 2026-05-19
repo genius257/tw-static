@@ -1823,6 +1823,125 @@ $utilitiesEx: ();
             ));
         }
 
+    // backdrop-filter
+    $utilities: map.set($utilities, "backdrop-filter-none", (
+        "-webkit-backdrop-filter": none,
+        "backdrop-filter": none
+    ));
+
+        // backdrop-filter: blur()
+        $variants: (xs, sm, md, lg, xl, 2xl, 3xl);
+        @each $variant in $variants {
+            $utilities: map.set($utilities, "backdrop-blur-#{$variant}" (
+                "--tw-backdrop-blur": "blur(var(--blur-#{$variant}))",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+        $utilities: map.set($utilities, "backdrop-blur-none", (
+            "--tw-backdrop-blur": "",
+        ));
+
+        // backdrop-filter: brightness()
+        @for $i from 0 through 40 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-brightness-#{$variant}", (
+                --tw-backdrop-brightness: "brightness(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: contrast()
+        @for $i from 0 through 40 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-contrast-#{$variant}", (
+                --tw-backdrop-contrast: "contrast(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: grayscale()
+        $utilities: map.set($utilities, "backdrop-grayscale", (
+            --tw-backdrop-grayscale: "contrast(100%)",
+            "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+        ));
+        @for $i from 0 through 19 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-grayscale-#{$variant}", (
+                --tw-backdrop-grayscale: "contrast(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: hue-rotate()
+        @for $i from 0 through 72 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-hue-rotate-#{$variant}", (
+                "--tw-backdrop-hue-rotate": "hue-rotate(#{$variant}deg)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+            $utilities: map.set($utilities, "-backdrop-hue-rotate-#{$variant}", (
+                "--tw-backdrop-hue-rotate": "hue-rotate(calc(#{$variant}deg * -1))",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+        
+        // backdrop-filter: invert()
+        $utilities: map.set($utilities, "backdrop-invert", (
+            "--tw-backdrop-invert": "invert(100%)",
+            "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+        ));
+        @for $i from 0 through 19 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-invert-#{$variant}", (
+                --tw-backdrop-invert: "invert(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: opacity()
+        @for $i from 0 through 20 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-opacity-#{$variant}", (
+                --tw-backdrop-opacity: "opacity(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: saturate()
+        @for $i from 0 through 40 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-saturate-#{$variant}", (
+                --tw-backdrop-saturate: "saturate(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
+        // backdrop-filter: sepia()
+        $utilities: map.set($utilities, "backdrop-sepia", (
+            "--tw-backdrop-sepia": "sepia(100%)",
+            "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+        ));
+        @for $i from 0 through 19 {
+            $variant: $i*5;
+            $utilities: map.set($utilities, "backdrop-sepia-#{$variant}", (
+                --tw-backdrop-sepia: "sepia(#{$variant}%)",
+                "-webkit-backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+                "backdrop-filter": "var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)",
+            ));
+        }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
