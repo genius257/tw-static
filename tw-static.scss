@@ -2083,6 +2083,12 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("perspective-", (dramatic, near, normal, midrange, distant), "perspective", "perspective-", true));
     $utilities: map.set($utilities, "perspective-none", (perspective: none));
 
+    // perspective-origin
+    $vartiants: (center, top, 'top-right', right, 'bottom-right', bottom, 'bottom-left', left, 'top-left');
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "perspective-origin-#{$variant}", ("perspective-origin": replace($variant, "-", " ", $variant)));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
