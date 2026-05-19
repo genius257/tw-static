@@ -2031,6 +2031,10 @@ $utilitiesEx: ();
         ),
     ));
 
+    // transition-behavior
+    $utilities: map.set($utilities, "transition-normal", ("transition-behavior": normal));
+    $utilities: map.set($utilities, "transition-discrete", ("transition-behavior": "allow-discrete"));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
