@@ -2042,6 +2042,28 @@ $utilitiesEx: ();
     }
     $utilities: map.set($utilities, "duration-initial", ("transition-duration": initial));
 
+    // transition-timing-function
+    $utilities: map.set($utilities, "ease-linear", (
+        "--tw-ease": linear,
+        "transition-timing-function": linear,
+    ));
+    $utilities: map.set($utilities, "ease-initial", (
+        "--tw-ease": initial,
+        "transition-timing-function": initial,
+    ));
+    $utilities: map.set($utilities, "ease-in", (
+        "--tw-ease": "var(--ease-in)",
+        "transition-timing-function": "var(--ease-in)",
+    ));
+    $utilities: map.set($utilities, "ease-out", (
+        "--tw-ease": "var(--ease-out)",
+        "transition-timing-function": "var(--ease-out)",
+    ));
+    $utilities: map.set($utilities, "ease-in-out", (
+        "--tw-ease": "var(--ease-in-out)",
+        "transition-timing-function": "var(--ease-in-out)",
+    ));
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
