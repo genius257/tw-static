@@ -2064,6 +2064,12 @@ $utilitiesEx: ();
         "transition-timing-function": "var(--ease-in-out)",
     ));
 
+    // transition-delay
+    $variants: (0, 75, 100, 150, 200, 300, 500, 700, 1000);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "delay-#{$variant}", ("transition-delay": "#{$variant}ms"));
+    }
+
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
