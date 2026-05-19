@@ -2074,6 +2074,10 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
+// Transforms
+
+    // backface-visibility
+    $utilities: map.merge($utilities, generate-utility-map("backface-", (hidden, visible), "backface-visibility"));
 
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
