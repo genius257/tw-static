@@ -428,6 +428,8 @@
     --tw-mask-linear-to-position: 100%;
     --tw-mask-linear-from-color: black;
     --tw-mask-linear-to-color: transparent;
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
 }
 
 @function generate-utility-map($name-prefix, $options, $rule, $value-prefix: "", $use-var: false) {
@@ -1946,6 +1948,43 @@ $utilitiesEx: ();
 
     // border-collapse
     $utilities: map.merge($utilities, generate-utility-map("border-", (collapse, separate), "border-collapse"));
+
+    // border-spacing
+    $utilities: map.merge($utilities, (
+        "border-spacing-px":(
+            "--tw-border-spacing-x": "1px",
+            "--tw-border-spacing-y": "1px",
+            "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+        ),
+        "border-spacing-x-px": (
+            "--tw-border-spacing-x": "1px",
+            "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+        ),
+        "border-spacing-y-px": (
+            "--tw-border-spacing-y": "1px",
+            "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+        ),
+    ));
+    $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    @each $variant in $variants {
+        $variant: "#{$variant}";
+        $name: replace($variant, ".", "\\.", $variant);
+        $utilities: map.merge($utilities, (
+            "border-spacing-#{$name}": (
+                "--tw-border-spacing-x": "calc(var(--spacing) * #{$variant})",
+                "--tw-border-spacing-y": "calc(var(--spacing) * #{$variant})",
+                "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+            ),
+            "border-spacing-x-#{$name}": (
+                "--tw-border-spacing-x": "calc(var(--spacing) * #{$variant})",
+                "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+            ),
+            "border-spacing-y-#{$name}": (
+                "--tw-border-spacing-y": "calc(var(--spacing) * #{$variant})",
+                "border-spacing": "var(--tw-border-spacing-x) var(--tw-border-spacing-y)",
+            ),
+        ));
+    }
 
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
