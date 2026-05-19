@@ -2070,6 +2070,7 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "delay-#{$variant}", ("transition-delay": "#{$variant}ms"));
     }
 
+    // animation
     $utilities: map.merge($utilities, generate-utility-map("animate-", ("spin", "ping", "pulse", "bounce"), "animation", "animate-", true));
     $utilities: map.set($utilities, "animate-none", ("animation": none));
 
