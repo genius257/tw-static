@@ -2089,6 +2089,46 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "perspective-origin-#{$variant}", ("perspective-origin": replace($variant, "-", " ", $variant)));
     }
 
+    // rotate
+    @for $i from 0 through 72 {
+        $variant: $i*5;
+        $utilities: map.merge($utilities, (
+            "rotate-none": (
+                rotate: none,
+            ),
+            "rotate-#{$variant}": (
+                rotate: "#{$variant}deg",
+            ),
+            "-rotate-#{$variant}": (
+                rotate: "calc(#{$variant}deg * -1)",
+            ),
+            "rotate-x-#{$variant}": (
+                "--tw-rotate-x": "rotateX(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-rotate-x-#{$variant}": (
+                "--tw-rotate-x": "rotateX(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "rotate-y-#{$variant}": (
+                "--tw-rotate-y": "rotateY(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-rotate-y-#{$variant}": (
+                "--tw-rotate-y": "rotateY(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "rotate-z-#{$variant}": (
+                "--tw-rotate-z": "rotateZ(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-rotate-z-#{$variant}": (
+                "--tw-rotate-z": "rotateZ(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+        ));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
