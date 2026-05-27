@@ -2448,6 +2448,9 @@ $utilitiesEx: ();
         }
     }
 
+    // scrollbar-width
+    $utilities: map.merge($utilities, generate-utility-map("scrollbar-", (auto, thin, none), "scrollbar-width"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
