@@ -2227,6 +2227,111 @@ $utilitiesEx: ();
         "transform-flat": ("transform-style": flat),
     ));
 
+    // translate
+    $variants: (0, "0.5", 1, 1.5, 2, 2.5, 3, 3.5, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 72, 80, 96);
+    @each $variant in $variants {
+        $variant: "#{$variant}";
+        $name: replace($variant, ".", "\\.", $variant);
+        $utilities: map.merge($utilities, (
+            "translate-#{$name}": (
+                "--tw-translate-x": "calc(var(--spacing) * #{$variant})",
+                "--tw-translate-y": "calc(var(--spacing) * #{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)",
+            ),
+            "-translate-#{$name}": (
+                "--tw-translate-x": "calc(var(--spacing) * -#{$variant})",
+                "--tw-translate-y": "calc(var(--spacing) * -#{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)",
+            ),
+            "translate-x-#{$name}": (
+                "--tw-translate-x": "calc(var(--spacing) * #{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)",
+            ),
+            "-translate-x-#{$name}": (
+                "--tw-translate-x": "calc(var(--spacing) * -#{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)",
+            ),
+            "translate-y-#{$name}": (
+                "--tw-translate-y": "calc(var(--spacing) * #{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)",
+            ),
+            "-translate-y-#{$name}": (
+                "--tw-translate-y": "calc(var(--spacing) * -#{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y)"
+            ),
+            "translate-z-#{$name}": (
+                "--tw-translate-z": "calc(var(--spacing) * #{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)",
+            ),
+            "-translate-z-#{$name}": (
+                "--tw-translate-z": "calc(var(--spacing) * -#{$variant})",
+                translate: "var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)",
+            ),
+        ));
+    }
+    $utilities: map.merge($utilities, (
+        "translate-full": (
+            "--tw-translate-x": "100%",
+            "--tw-translate-y": "100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-full": (
+            "--tw-translate-x": "-100%",
+            "--tw-translate-y": "-100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-px": (
+            "--tw-translate-x": "1px",
+            "--tw-translate-y": "1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-px": (
+            "--tw-translate-x": "-1px",
+            "--tw-translate-y": "-1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-x-full": (
+            "--tw-translate-x": "100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-x-full": (
+            "--tw-translate-x": "-100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-x-px": (
+            "--tw-translate-x": "1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-x-px": (
+            "--tw-translate-x": "-1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-y-full": (
+            "--tw-translate-y": "100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-y-full": (
+            "--tw-translate-y": "-100%",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-y-px": (
+            "--tw-translate-y": "1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "-translate-y-px": (
+            "--tw-translate-y": "-1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y)",
+        ),
+        "translate-z-px": (
+            "--tw-translate-z": "1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)",
+        ),
+        "-translate-z-px": (
+            "--tw-translate-z": "-1px",
+            translate: "var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)",
+        ),
+    ));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
