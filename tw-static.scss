@@ -2214,6 +2214,13 @@ $utilitiesEx: ();
         "transform-cpu": (transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)"),
     ));
 
+    // transform-origin
+    $variants: (center, top, "top-right", right, "bottom-right", bottom, "bottom-left", left, "top-left");
+    @each $variant in $variants {
+        $value: replace($variant, "-", " ", $variant);
+        $utilities: map.set($utilities, "origin-#{$variant}", ("transform-origin": $value));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
