@@ -2221,6 +2221,12 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "origin-#{$variant}", ("transform-origin": $value));
     }
 
+    // transform-style
+    $utilities: map.merge($utilities, (
+        "transform-3d": ("transform-style": "preserve-3d"),
+        "transform-flat": ("transform-style": flat),
+    ));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
