@@ -2354,6 +2354,16 @@ $utilitiesEx: ();
     // appearance
     $utilities: map.merge($utilities, generate-utility-map("appearance-", (none, auto), "appearance"));
 
+    // caret-color
+    $utilities: map.merge($utilities, generate-utility-map("caret-", (inherit, transparent), "color"));
+    $utilities: map.set($utilities, "caret-current", ("color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("caret-", (black, white), "color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "caret-#{$color}-#{$weight}", ("color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
