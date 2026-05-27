@@ -2364,6 +2364,13 @@ $utilitiesEx: ();
         }
     }
 
+    // color-scheme
+    $variants: (normal, dark, light, "light-dark", "only-dark", "only-light");
+    @each $variant in $variants {
+        $value: replace($variant, "-", " ", $variant);
+        $utilities: map.set($utilities, "scheme-#{$variant}", ("color-scheme": $value));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
