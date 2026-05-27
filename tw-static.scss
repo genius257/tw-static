@@ -2377,6 +2377,9 @@ $utilitiesEx: ();
     // field-sizing
     $utilities: map.merge($utilities, generate-utility-map("field-sizing-", (fixed, content), "field-sizing"));
 
+    // pointer-events
+    $utilities: map.merge($utilities, generate-utility-map("pointer-events-", (auto, none), "pointer-events"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
