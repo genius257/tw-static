@@ -2351,6 +2351,9 @@ $utilitiesEx: ();
         }
     }
 
+    // appearance
+    $utilities: map.merge($utilities, generate-utility-map("appearance-", (none, auto), "appearance"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
