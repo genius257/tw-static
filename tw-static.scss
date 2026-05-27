@@ -2371,6 +2371,9 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "scheme-#{$variant}", ("color-scheme": $value));
     }
 
+    // cursor
+    $utilities: map.merge($utilities, generate-utility-map("cursor-", (auto, default, pointer, wait, text, move, help, "not-allowed", none, "context-menu", progress, cell, crosshair, "vertical-text", alias, copy, "no-drop", grab, grabbing, "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out"), "cursor"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
