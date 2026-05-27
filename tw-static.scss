@@ -2339,6 +2339,18 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "zoom-#{$i}", (zoom: "#{$i}%"));
     }
 
+// Interactivity
+
+    // accent-color
+    $utilities: map.merge($utilities, generate-utility-map("accent-", (inherit, transparent), "color"));
+    $utilities: map.set($utilities, "accent-current", ("color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("accent-", (black, white), "color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "accent-#{$color}-#{$weight}", ("color": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
