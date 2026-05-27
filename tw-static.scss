@@ -2388,6 +2388,9 @@ $utilitiesEx: ();
         "resize-x": (resize: horizontal),
     ));
 
+    // scroll-behavior
+    $utilities: map.merge($utilities, generate-utility-map("scroll-", (auto, smooth), "scroll-behavior"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
