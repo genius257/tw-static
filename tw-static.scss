@@ -2391,6 +2391,63 @@ $utilitiesEx: ();
     // scroll-behavior
     $utilities: map.merge($utilities, generate-utility-map("scroll-", (auto, smooth), "scroll-behavior"));
 
+    // scrollbar-color
+    $utilities: map.merge($utilities, (
+        "scrollbar-thumb-inherit": (
+            "--tw-scrollbar-thumb": inherit,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-track-inherit": (
+            "--tw-scrollbar-track": inherit,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-thumb-transparent": (
+            "--tw-scrollbar-thumb": transparent,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-track-transparent": (
+            "--tw-scrollbar-track": transparent,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-thumb-current": (
+            "--tw-scrollbar-thumb": currentColor,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-track-current": (
+            "--tw-scrollbar-track": currentColor,
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-thumb-black": (
+            "--tw-scrollbar-thumb": "var(--color-black)",
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-track-black": (
+            "--tw-scrollbar-track": "var(--color-black)",
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-thumb-white": (
+            "--tw-scrollbar-thumb": "var(--color-white)",
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+        "scrollbar-track-white": (
+            "--tw-scrollbar-track": "var(--color-white)",
+            "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+        ),
+    ));
+    $utilities: map.merge($utilities, generate-utility-map("caret-", (black, white), "color", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "scrollbar-thumb-#{$color}-#{$weight}", (
+                "--tw-scrollbar-thumb": "var(--color-#{$color}-#{$weight})",
+                "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+            ));
+            $utilities: map.set($utilities, "scrollbar-track-#{$color}-#{$weight}", (
+                "--tw-scrollbar-track": "var(--color-#{$color}-#{$weight})",
+                "scrollbar-color": "var(--tw-scrollbar-thumb) var(--tw-scrollbar-track)",
+            ));
+        }
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
