@@ -2330,6 +2330,7 @@ $utilitiesEx: ();
             "--tw-translate-z": "-1px",
             translate: "var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z)",
         ),
+        "translate-none": (translate: none),
     ));
 
 // Dynamically inject colors into the utilities map
