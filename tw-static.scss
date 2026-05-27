@@ -2333,6 +2333,12 @@ $utilitiesEx: ();
         "translate-none": (translate: none),
     ));
 
+    // zoom
+    @for $i from 0 through 72 {
+        $variant: $i*5;
+        $utilities: map.set($utilities, "zoom-#{$i}", (zoom: "#{$i}%"));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
