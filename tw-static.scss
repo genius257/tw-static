@@ -2174,6 +2174,39 @@ $utilitiesEx: ();
     $utilities: map.set($utilities, "scale-none", (scale: none));
     $utilities: map.set($utilities, "scale-3d", (scale: "var(--tw-scale-x) var(--tw-scale-y) var(--tw-scale-z)"));
 
+    // skew
+    @for $i from 0 through 72 {
+        $variant: $i*5;
+        $utilities: map.merge($utilities, (
+            "skew-${variant}": (
+                "--tw-skew-x": "skewX(#{$variant}deg)",
+                "--tw-skew-y": "skewY(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-skew-${variant}": (
+                "--tw-skew-x": "skewX(calc(#{$variant}deg * -1))",
+                "--tw-skew-y": "skewY(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "skew-x-${variant}": (
+                "--tw-skew-x": "skewX(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-skew-x-${variant}": (
+                "--tw-skew-x": "skewX(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "skew-y-${variant}": (
+                "--tw-skew-y": "skewY(#{$variant}deg)",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+            "-skew-y-${variant}": (
+                "--tw-skew-y": "skewY(calc(#{$variant}deg * -1))",
+                transform: "var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)",
+            ),
+        ));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
