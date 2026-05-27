@@ -2451,6 +2451,10 @@ $utilitiesEx: ();
     // scrollbar-width
     $utilities: map.merge($utilities, generate-utility-map("scrollbar-", (auto, thin, none), "scrollbar-width"));
 
+    // scrollbar-gutter
+    $utilities: map.merge($utilities, generate-utility-map("scrollbar-gutter-", (auto, stable), "scrollbar-gutter"));
+    $utilities: map.set($utilities, "scrollbar-gutter-both", ("scrollbar-gutter": "stable both-edges"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
