@@ -2569,6 +2569,9 @@ $utilitiesEx: ();
         ),
     ));
 
+    // Forced Color Adjust
+    $utilities: map.merge($utilities, "forced-color-adjust-", (auto, none), "forced-color-adjust");
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
