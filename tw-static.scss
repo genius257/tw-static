@@ -2501,6 +2501,13 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "snap-#{$variant}", ("--tw-scroll-snap-strictness": $variant));
     }
 
+    // touch-action
+    $variants: (auto, none, "pan-x", "pan-left", "pan-right", "pan-y", "pan-up", "pan-down", "pinch-zoom", manipulation);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "touch-#{$variant}", ("touch-action": $variant));
+    }
+
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
