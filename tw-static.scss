@@ -2490,6 +2490,17 @@ $utilitiesEx: ();
     // scroll-snap-stop
     $utilities: map.merge($utilities, generate-utility-map("snap-", (normal, always), "scroll-snap-stop"));
 
+    // scroll-snap-type
+    $utilities: map.set($utilities, "snap-none", ("scroll-snap-type": none));
+    $variants: (x, y, both);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "snap-#{$variant}", ("scroll-snap-type": "#{$variant} var(--tw-scroll-snap-strictness)"));
+    }
+    $variants: (mandatory, proximity);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "snap-#{$variant}", ("--tw-scroll-snap-strictness": $variant));
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
