@@ -2487,6 +2487,9 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("snap-", (start, end, center), "scroll-snap-align"));
     $utilities: map.set($utilities, "snap-align-none", ("scroll-snap-align": none));
 
+    // scroll-snap-stop
+    $utilities: map.merge($utilities, generate-utility-map("snap-", (normal, always), "scroll-snap-stop"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
