@@ -2572,38 +2572,6 @@ $utilitiesEx: ();
     // Forced Color Adjust
     $utilities: map.merge($utilities, "forced-color-adjust-", (auto, none), "forced-color-adjust");
 
-// Dynamically inject colors into the utilities map
-@each $color in $colors {
-  @each $weight in $weights {
-    $utilities: map.merge(
-      $utilities,
-      (
-        "bg-#{$color}-#{$weight}": (
-          "background-color": var(--color-#{$color}-#{$weight}),
-        ),
-        "border-#{$color}-#{$weight}": (
-          "border-color": var(--color-#{$color}-#{$weight}),
-        ),
-        "text-#{$color}-#{$weight}": (
-          "color": var(--color-#{$color}-#{$weight}),
-        ),
-        "decoration-#{$color}-#{$weight}": (
-          "text-decoration-color": var(--color-#{$color}-#{$weight}),
-        ),
-        "outline-#{$color}-#{$weight}": (
-          "outline-color": var(--color-#{$color}-#{$weight}),
-        ),
-        "accent-#{$color}-#{$weight}": (
-          "accent-color": var(--color-#{$color}-#{$weight}),
-        ),
-        "caret-#{$color}-#{$weight}": (
-          "caret-color": var(--color-#{$color}-#{$weight}),
-        ),
-      )
-    );
-  }
-}
-
 $variants: (
   "hover": ":hover",
   "focus": ":focus",
