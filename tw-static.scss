@@ -2507,6 +2507,12 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "touch-#{$variant}", ("touch-action": $variant));
     }
 
+    // user-select
+    $variants: (none, text, all, auto);
+    @each $variant in $variants {
+        $utilities: map.set($utilities, "select-#{$variant}", ("user-select": $variant));
+    }
+
 
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
