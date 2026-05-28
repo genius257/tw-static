@@ -1395,7 +1395,7 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("rounded-", (xs, sm, md, lg, xl, "2xl", "3xl", "4xl"), "border-radius", "radius-", true));
 
     // border-width
-    $variants: ("": "-width", "-x": "-inline-width", "-y": "-block-width", "-s": "-inline-start-width", "-e": "-inline-end-width", "-bs": "-block-start-width", "-be": "border-block-end-width", "-t": "-top-width", "-r": "-right-width", "-b": "-bottom-width", "-l": "-left-width");
+    $variants: ("": "-width", "-x": "-inline-width", "-y": "-block-width", "-s": "-inline-start-width", "-e": "-inline-end-width", "-bs": "-block-start-width", "-be": "-block-end-width", "-t": "-top-width", "-r": "-right-width", "-b": "-bottom-width", "-l": "-left-width");
     @each $name, $prop in $variants {
         $utilities: map.set($utilities, "border#{$name}", ("border#{$prop}": "1px"));    
         $variants2: (0, 2, 4, 8);
@@ -1432,8 +1432,8 @@ $utilitiesEx: ();
             "border-bottom-width": "calc(#{$i}px * calc(1 - var(--tw-divide-y-reverse)))",
         ));
     }
-    $utilitiesEx: map.set($utilities, "divide-x-reverse", ("--tw-divide-x-reverse": 1));
-    $utilitiesEx: map.set($utilities, "divide-y-reverse", ("--tw-divide-y-reverse": 1));
+    $utilitiesEx: map.set($utilitiesEx, "divide-x-reverse", ("--tw-divide-x-reverse": 1));
+    $utilitiesEx: map.set($utilitiesEx, "divide-y-reverse", ("--tw-divide-y-reverse": 1));
 
     // border-color
     $utilities: map.merge($utilities, generate-utility-map("border-", (inherit, transparent), "border-color"));
