@@ -2529,6 +2529,16 @@ $utilitiesEx: ();
         }
     }
 
+    // stroke
+    $utilities: map.merge($utilities, generate-utility-map("stroke-", (none, inherit, transparent), "stroke"));
+    $utilities: map.set($utilities, "stroke-current", ("color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("stroke-", (black, white), "stroke", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "stroke-#{$color}-#{$weight}", ("stroke": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
