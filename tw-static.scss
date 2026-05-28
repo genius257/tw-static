@@ -2539,6 +2539,9 @@ $utilitiesEx: ();
         }
     }
 
+    // stroke-width
+    $utilities: map.merge($utilities, generate-utility-map("stroke-", (0, 1, 2), "stroke-width"));
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
