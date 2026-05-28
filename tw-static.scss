@@ -2513,6 +2513,9 @@ $utilitiesEx: ();
         $utilities: map.set($utilities, "select-#{$variant}", ("user-select": $variant));
     }
 
+    // will-change
+    $utilities: map.merge($utilities, generate-utility-map("will-change-", (auto, contents, transform), "will-change"));
+    $utilities: map.set($utilities, "will-change-scroll", ("will-change": "scroll-position"));
 
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
