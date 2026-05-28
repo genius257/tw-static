@@ -2517,6 +2517,18 @@ $utilitiesEx: ();
     $utilities: map.merge($utilities, generate-utility-map("will-change-", (auto, contents, transform), "will-change"));
     $utilities: map.set($utilities, "will-change-scroll", ("will-change": "scroll-position"));
 
+// SVG
+
+    // fill
+    $utilities: map.merge($utilities, generate-utility-map("fill-", (none, inherit, transparent), "fill"));
+    $utilities: map.set($utilities, "fill-current", ("color": currentColor));
+    $utilities: map.merge($utilities, generate-utility-map("fill-", (black, white), "fill", "color-", true));
+    @each $color in $colors {
+        @each $weight in $weights {
+            $utilities: map.set($utilities, "fill-#{$color}-#{$weight}", ("fill": var(--color-#{$color}-#{$weight})));
+        }
+    }
+
 // Dynamically inject colors into the utilities map
 @each $color in $colors {
   @each $weight in $weights {
